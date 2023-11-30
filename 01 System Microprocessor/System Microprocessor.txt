@@ -1,0 +1,17 @@
+SYSTEM MICROPROCESSOR
+
+System Microprocessor
+1. Binary (bit)
+   - 0 LOW 0V
+   - 1 HIGH 5V
+
+2. Memory 
+   - Data
+   - Instruction (+,-,x,%)
+
+3. I/O (Input Output) 
+
+4. ALU (Aritmatic Logic Unit)
+   - AND
+   - OR
+   - XOR
