@@ -1,0 +1,19 @@
+MICROPROCESSOR INTEL 8086
+
+INTEL 8086
+- version date 1978
+- specified :
+  1. Address BUS     -> 20 bit
+  2. Data BUS        -> 16 bit
+  3. Memory Capacity -> 1 MB (1,000 kb -> 1,000,000 byte) (1 Byte -> 8 bit)
+  4. 
+  
+  
+  
+  
+- Process System Computer :
+   Fetch --------> Decode ----------> Execute
+     |                |                  |
+    BIU                                  EU
+     V                V                  V
+ Take Data         Process            Run Data
