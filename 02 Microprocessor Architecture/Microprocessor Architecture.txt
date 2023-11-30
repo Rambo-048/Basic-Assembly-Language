@@ -1,0 +1,35 @@
+MICROPROCESSOR ARCHITECTURE
+
+1. Microprocessor
+   - IC (Integrated Circuit)
+   - DIP/PDIP
+   - CHIP
+   - CPU
+
+2. Microcontroler
+   - Memory
+   - Microprocessor
+   - I/O(Input Output)
+   
+3. Microcomputer
+   --------------------------------------------------
+     System Data :
+     - Memory --> I/O --> Microprocessor --> Memory
+     - Memory --> Microprocessor --> I/O --> Memory
+   --------------------------------------------------
+   
+   RAM -> Random Access Memory (Not Permanent)
+   ROM -> Read Only Memory (Fixed Program/Permanent)
+   
+   Read and Write :
+   1. Read 
+      - Memory --> CPU
+      - Input  --> CPU
+      
+   2. Write      
+      - CPU --> Memory
+      - CPU --> Output
+      
+      
+      
+
