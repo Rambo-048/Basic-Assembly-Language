@@ -1,0 +1,106 @@
+FLAGS REGISTER
+
+Example : code_assembly.asm
+          
+          MOV AL, 10
+          MOV CL, 1A
+          ADD AL, CL
+                       1  
+          AL = 10 = 0000 1010
+          CL = 1C = 0001 1100
+          ____________________ +
+                    0000 0110   
+                     
+                     0  |  6  
+          
+          AL + CL = 06
+
+Flags --> Function Flag Save Value From ALU that indicates the current state of the execution 
+          of arithmetic or logical instruction in the processor.
+                
+1. Carry Flag (CF)                 | If have Carry (+) and Borrow (-) --> 1
+   example 1 :                         
+     [empty] [0] 000
+             [0] 010
+     ________________+             | CF -> 0 |
+              0  010
+    
+    example 2 :                         
+        [1]  [1] 000
+             [1] 010
+     ________________+             | CF -> 1 |
+              0  010
+             
+            
+2. Parity Flag (PF)                | Total bit 1; Even Parity = 1, Odd Parity = 0
+    example 2 :                         
+        [1]  [1] 000
+             [1] 010
+     ________________+          
+              0  010
+                     Total 2       | PF -> 1 |  
+             
+             
+3. Auxiliary Carry Flag (AF)       | Carry Show on Bit A4; Have Carry = 1, No Carry = 0
+   0   0   0   0   0   0   0   0   |
+   A7  A6  A5  A4  A3  A2  A1  A0  |
+   
+   example 1:
+      1 --------> A4 Have Carry
+   0010 1000
+   0000 1010
+   ___________+ 
+   0011 0010                       | AF -> 1 |   
+   
+   example 2:
+      .--------> A4 No Carry
+   0010 0000
+   0001 0010
+   ___________+ 
+   0011 0010                       | AF -> 0 |                 
+                 
+   
+4. Zero Flag (ZF)                  | Total have value zero or not; Have value 0 -> 1, No value 0 -> 0
+   example :
+   
+   0000 1010
+   0000 1100
+   ___________+ 
+   0000 0110 
+              Total 06             | ZF -> 1 |
+
+5. Sign Flag (SF)                  | Value MSB(Most Significant Bit) Number; If MSB 1 -> (Negatif), If MSB 0 -> (Positif) 
+                                   | MSB == First Bit
+                                   
+    example :
+   
+    0000 0100
+    0000 1000
+    ___________+ 
+    0010 1100 
+                Total 2C           | SF -> 0 |
+                     [2]      C
+                     positif
+                     
+6. Overflow Flag (OF)              | If Unsigned number -> 1, If signed number -> 0 
+   example :
+   - unsigned --> disk 10kb --> save 15kb (buffer)
+   - signed   --> disk 10kb --> save 10kb (no buffer)
+   
+                                   | OF -> 0 |
+
+7. Interupt Flag (IF)              | IGNORE if instruction from outside -> 0, AGREE instruction from inside -> 1
+                                   
+   - No Instruction From Outside - | IF -> 0 |
+
+8. Trap Flag (TF)                  | Single Step Operation -> 1
+                                   
+   - No Single Step Operation -    | TF -> 0 |
+
+
+9. Directional Flag (DF)           | If use string operation to show direction process
+                                   | Up   -> 1
+                                   | Down -> 0
+                                   
+   - No String Operation -         | DF -> 0 |
+
