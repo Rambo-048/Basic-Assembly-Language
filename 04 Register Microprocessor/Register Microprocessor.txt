@@ -1,0 +1,70 @@
+REGISTER MICROPROCESSOR
+
+1. BIU (BUS INTERFACE UNIT)
+   Function :
+   - Transfer Data
+     Microprocessor --> Memory --> Input/Output
+   - Set Address
+   - Set/Save FIFO Code
+   
+2. 6 Byte Execution Queue
+    - Fetch -|-> Decode -|-> Execute -|-> Fetch -|-> Decode -|-> Execute          |
+        1          2            3           4           5           6      Byte   |  Execute
+        
+             | Fetch -|-> Decode -|-> Execute -|-> Fetch -|-> Decode -|-> Execute          |
+                 1          2            3           4           5           6      Byte   | 
+                 
+
+3. Register INTEL 8086
+   - Register --> Memory inside Processor (characteristic not Permanent)         
+       
+   1. General Purpose Register
+      1. AX (Acumulator Register)  -> When the microprocessor performs any arithmetic or logical operations, 
+                                   the accumulator provides one of the operands 
+                                   and it also holds the result of the operation. 
+      2. BX (Base Register)        -> Reading Data from Memory or Writing data into memory 
+      3. CX (Counter Register)     -> In rotate and shift instructions, register CL is used as 8 bit counter, 
+                                   it used to store 8-bit count. In some instructions like REP (repeat), 
+                                   Loop, register CX is used as 16-bit implicit counter.
+      4. DX (Address Register)     -> Create Address for Input/Output
+   
+   
+   2. Pointers
+      1. Stack Pointer             -> It is used to hold the address of the stack top. 
+      				      Stack top is the uppermost filled memory location in stack memory. 
+      				      There is no access to these register directly, 
+      				      the modifications are done depending on the contents of the stack.
+       
+      2. Base Pointer              -> The use of BP as a pointer to a memory location is similar to the use of SI and DI registers. 
+                                      BP register acts as a memory pointer to the stack segment register. 
+                                      The BP register is mainly used to access any location directly in the stack.
+       
+   3. Index Register
+      1. Destination Index         -> Store Data
+      2. Source Index              -> microprocessor will take the effective address of the data.
+      
+      -- Take the address of the data from SI and store it in DI --
+   
+   4. Segment Register
+      1. Code Segment              -> It is used to point to the base address of the code segment.
+      2. Data Segment              -> It is used to point to the base address of the data segment.
+      3. Stack Segment             -> This register is used to store the base address of the stack memory segment.
+      4. Extra Segment             -> This register is used to store the base address of the extra memory segment.
+    
+   5. Instruction Pointer          -> The IP gives the offset address of the next instruction to be executed, 
+                                      IP stores the address of the next instruction to be fetched from the code segment. 
+                                      When reset is activated, the instruction pointer is 
+                                      set to the address of the first instruction to be fetched.
+   6. Flags --> Function Flag Save Value From ALU 
+                that indicates the current state of the execution 
+                of arithmetic or logical instruction in the processor.
+                
+      1. Carry Flag (CF)
+      2. Parity Flag (PF)
+      3. Auxiliary Carry Flag (AF)
+      4. Zero Flag (ZF)
+      5. Sign Flag (SF)
+      6. Overflow Flag (OF)
+      7. Interupt Flag (IF)
+      8. Trap Flag (TF)
+      9. Directional Flag (DF)
