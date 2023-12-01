@@ -1,0 +1,73 @@
+DEBUG USE DOSBOX
+
+- LINUX
+  - nasm, tasm
+    sudo apt install nasm
+  - gdb
+    sudo apt install gdb
+  
+  OR
+  - dosbox
+    sudo apt install dosbox
+  
+-------------------------------------
+Command :
+C:\> DEBUG
+- R (register)
+
+;Insert Data to Register AX and BX
+- RAX 
+- RBX
+
+;Read Memory
+- D (Dump)
+
+;Write Instruction
+- A (Assembler)
+- A100 (Go to Address 100)
+0340:0100 MOV AX,BX
+0340:0102 
+
+;Proceed Instrucion
+- P
+-----------------------------------------
+-----------------------------------------------------------
+;Debug Command List :
+ assemble     A [address]
+ compare      C range address
+ dump         D [range]
+ enter        E address [list]
+ fill         F range list
+ go           G [=address] [addresses]
+ hex          H value1 value2
+ input        I port
+ load         L [address] [drive] [firstsector] [number]
+ move         M range address
+ name         N [pathname] [arglist]
+ output       O port byte
+ proceed      P [=address] [number]
+ quit         Q
+ register     R [register]
+ search       S range list
+ trace        T [=address] [value]
+ unassemble   U [range]
+ write        W [address] [drive] [firstsector] [number]
+------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
