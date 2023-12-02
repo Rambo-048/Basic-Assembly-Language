@@ -1,0 +1,51 @@
+ADDITION ARITHMATIC INSTRUCTION (+,-,x,%)
+
+[+] 
+   1. ADD
+      ADD Destination, Source     S+D    --> D
+      ADD AX, CX 
+                       no_carry  
+                           0     1  1 111  1 11 11
+          RAX 454E -->           0100 0101 0100 1110 
+          RCX 4F52 -->           0100 1111 0101 0010
+                       ______________________________ +
+               ADD -->           1001 0100 1010 0000
+                                   9     4    A   0  
+                                 
+   2. ADC
+      ADC Destination, Source     S+D+CF --> D
+      ADD AX, CX 
+                         carry  
+                           1     1  1 111  1 11 11
+          RAX 454E -->           0100 0101 0100 1110 
+          RCX CF52 -->           1100 1111 0101 0010
+                       ______________________________ +
+               ADD -->           0001 0100 1010 0000
+                                   9     4    A   0 
+                                    
+               ADC -->                          0001
+                       ______________________________ +
+                                 0001 0100 1010 0001
+                                   1    4    A    1
+  
+   3. INC (Increment)
+      INC Destination             D+I   --> D
+      RAX 0001
+      INC AX
+          AX+1 : 0002
+      
+   4. DAA (Decimal Adjust for Addition)
+      example :
+      RAX 0005
+      RCX 0005
+      ADD AX, CX  --> A 
+      DAA         --> 10
+      
+      
+   5. AAA (ASCII adjust for Addition)
+      example :
+      RAX 0005
+      RCX 0005
+      ADD AX, CX  --> A 
+      AAA         --> 0101 (ASCII 101 -> A)
+      
