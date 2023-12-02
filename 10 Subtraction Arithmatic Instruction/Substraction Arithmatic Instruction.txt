@@ -58,14 +58,14 @@ SUBSTRACTION ARITHMATIC INSTRUCTION
        example :
        RAX 000F
        RCX 0005
-       SUB AX, CX   --> 10
+       SUB AX, CX   --> A
        DAS          --> 10
        
     6. AAS (ASCII Adjust for Substraction)
        example :
        RAX 000F
        RCX 0005
-       SUB AX, CX   -->  10
-       AAS          --> 0001 0000
-                         1    0
+       SUB AX, CX   --> A
+       AAS          --> 0101 (ASCII 101 -> A)
+                        
                               
