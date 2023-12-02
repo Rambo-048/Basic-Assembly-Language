@@ -1,0 +1,75 @@
+DATA TRANSFER INSTRUCTION (DEBUG)
+
+Instruction Set :
+---------------------
+A. Data Transfer Instruction
+   1.  MOVE --> MOV --> Copy word(16bit) or Byte(8bit)  
+       MOV Destination,         Source
+                |                  |
+                V                  V
+           Register,             number, 
+                               register
+         [Memory Address]     [Memory Address]
+     
+       example : [Source --> Data] 1 way
+       MOV SI,[ABCH]
+          0ABC[FFFF]  
+    
+    2. EXCHANGE --> XCHG --> Change Data
+       XCHG Destination,        Source 
+                |                 |
+                -------------------
+                         |
+                  - Same Data Type
+                  - Exchange Cant use on Segment Register DS, ES
+                   
+       example : [Source <--> Data]
+       XCHG AX,DX
+            AX: 10
+            DX: 20
+            
+    3. LEA (Load Effective Address) --> LEA --> Register 16bit(WORD)
+       LEA, function to Copy Memory Address
+       
+       example : EA --> Register 16
+       LEA CX,[ABCH]
+              0ABC[FFFF]
+              
+              
+    4. LDS(Load Pointer Using DS) --> Register 16bit(WORD), Memory32 
+       LDS, Copy data from memory address with displacement.
+       
+       R16 --> SPTR and SPTR+1
+       DS  --> SPTR+2 and SPTR+3
+       
+       example :
+       LDS            CX       ,  [1234]
+                      Memory       
+           SPTR   ->  1234          10
+           SPTR+1 ->  1235          20  
+           SPTR+2 ->  1236          30
+           SPTR+3 ->  1237          40
+          
+       ;data CX and DS
+       CX [CH   |   CL]   
+          [ 2       1 ]
+       DS [DH    |  DL]
+          [ 4       3 ] 
+    
+    5. LES(Load Pointer using ES) --> Register 16bit(WORD), Memory32
+       example :
+       LES            CX       ,  [1234]
+                      Memory       
+           SPTR   ->  1234          10  
+           SPTR+1 ->  1235          20  
+           SPTR+2 ->  1236          30
+           SPTR+3 ->  1237          40
+       
+       ;data CX and ES
+       CX [CH   |   CL]   
+          [20       10]
+       ES [EH    |  EL]
+          [40       30] 
+      
+       
+    
