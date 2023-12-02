@@ -6,7 +6,8 @@ INTEL 8086
   1. Address BUS     -> 20 bit
   2. Data BUS        -> 16 bit
   3. Memory Capacity -> 1 MB (1,000 kb -> 1,000,000 byte) (1 Byte -> 8 bit)
-  4. 
+  4. Have >= 20.000 Instruction
+  5. Support times & divided by
   
   
   
