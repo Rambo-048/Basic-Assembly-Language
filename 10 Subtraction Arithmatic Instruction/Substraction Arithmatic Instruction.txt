@@ -55,8 +55,16 @@ SUBSTRACTION ARITHMATIC INSTRUCTION
                   FFFF
                   
     5. DAS (Decimal Adjust for Substraction)
-       SUB AX, CX
-       DAS
+       example :
+       RAX 000F
+       RCX 0005
+       SUB AX, CX   --> 5
+       DAS          --> 5
        
     6. AAS (ASCII Adjust for Substraction)
-       SUB AX, CX
+       example :
+       RAX 000F
+       RCX 0005
+       SUB AX, CX   --> 5
+       AAS          --> 35H  0011 0101
+                              3    5 
