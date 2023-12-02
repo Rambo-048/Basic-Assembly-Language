@@ -1,0 +1,62 @@
+SUBSTRACTION ARITHMATIC INSTRUCTION
+
+[-] 
+    
+    1. SUB (Substraction)
+       SUB Destination, Source      D - S      --> D
+       example :
+       RAX = 2000
+       RCX = 3000
+       SUB AX    ,   CX  
+           2000      3000
+           2000  -   3000 = -1000 == F000  -> |  carry    F000 |    
+                                              | -1 -1 -1  1    |  
+                                      
+       
+    2. SBB
+       SBB Destination, Source      D - S - CF --> D
+       example :
+       RAX = 2000
+       RCX = 3000
+       SBB AX    ,   CX  
+           2000      3000
+           2000  -   3000 = -1000 = F000
+                                    1111
+                                   ______ -
+                                   E[-1][-1][-1]
+                                   EFFF
+                                   
+                                   
+    3. DEC (Decrement)             D - 1      --> D
+       DEC Destination
+       example : 
+       RAX  = 0002
+       DEC AX
+           AX 0002
+                 1
+              _____ -
+              0001
+       
+    4. NEG (Negasi)                0 - D      --> D
+       NEG Destination   
+       example :
+       RCX = 0002
+       NEG        CX
+                 [00]  [02]
+                 0000  0010
+                 
+          Negasi 1111  1101   complement 1
+                       0010   complement 1 + 2
+                 __________ +
+                 1111  1111
+                  F     F
+                  
+        NEG       CX
+                  FFFF
+                  
+    5. DAS (Decimal Adjust for Substraction)
+       SUB AX, CX
+       DAS
+       
+    6. AAS (ASCII Adjust for Substraction)
+       SUB AX, CX
