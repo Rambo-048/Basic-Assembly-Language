@@ -1,0 +1,186 @@
+SHIFT AND ROTATE INSTRUCTIONS
+
+SHIFT :
+       1. SAL (Shift Arithmatic to Left)  |             
+          SAL Destination, Count          | ---->   CF <- MSB <------------------- LSB <- 0 (SAL & SHL, have same concept to process data)
+          example :
+          -. SAL AL, 1
+                 AL, ABH      msb   <-----------------------  lsb 
+                                        A             B 
+                     ABH      NC   [1][0][1][0] [1][0][1][1]
+                                                         /                                                 
+                              CF                        /    Gap
+                              [1]  [0][1][0][1] [0][1][1][0] [0]
+                                        5             6
+              SAL AL, 56H
+          
+          
+                                           
+       2. SHL (Shift Logical to Left)     |
+          SHL Destination, Count          | ---->   CF <- MSB <------------------- LSB <- 0 (SAL & SHL, have same concept to process data)
+          example :
+          -. SHL AL, 1
+                 AL, ACH      msb   <-----------------------  lsb 
+                                        A             C 
+                     ACH      NC   [1][0][1][0] [1][1][0][0]
+                                                         /                                                 
+                              CF                        /    Gap
+                              [1]  [0][1][0][1] [1][0][0][0] [0]
+                                        5             8
+              SHL AL, 58H
+          
+         
+          
+       3. SAR (Shift Arithmatic to Right) |
+          SAR Destination, Count          | ---->    MSB -> MSB -------------------> LSB -> CF
+          example :
+          -. SAR AL, 1
+                 AL, ABH      msb  ------------------------>  lsb 
+                                        A             B 
+                     ABH      NC  [1][0][1][0] [1][0][1][1]
+                                  / \                                                                     
+                              MSB/   \                       CF
+                              [1] [1][1][0][1] [0][1][0][1] [1]
+                               |   ^
+                               |   |
+                               -----
+                                         D            5         
+             SAR AL, D5H
+          
+                                            
+       4. SHR (Shift Logical to Right)    |
+          SHR Destination, Count          | ---->    0 -> MSB -------------------> LSB -> CF
+          example :
+          -. SHR AL, 1
+                 AL, ABH      msb  ------------------------>  lsb 
+                                        A             B 
+                     ABH      NC   [1][0][1][0] [1][0][1][1]
+                                     \                                                                     
+                              Gap     \                       CF
+                              [0]  [0][1][0][1] [0][1][0][1] [1]
+                               |    ^
+                               |    |
+                               ------
+                                         5            5         
+             SHR AL, 55H
+
+-------------------------------------------------------------------------------------------------------------------------             
+ROTATE :
+       
+       1. ROL (Rotate Operation to Left) |              
+          ROL Destinatiion, Count        | CF <- MSB <------------------- LSB  
+                                                  |                        ^
+                                                  |                        |
+                                                  |        Rotate          |
+                                                  --------------------------
+          example :
+          -. ROL AL, 1
+                 AL, ABH      CF <- MSB <------------------- LSB  
+                                     |                        ^
+                                     |                        |
+                                     |        Rotate          |
+                                     -------------------------- 
+                 
+                 
+                              NC         A            B 
+                     ABH      [0]   [1][0][1][0] [1][0][1][1]
+                                                         /                                                 
+                         MSB                            /   
+                         [1]        [0][1][0][1] [0][1][1][1] 
+                          |                                ^                          
+                          |                                |
+                          ----------------------------------        
+                                          5           7
+              ROL AL, 57H
+                                           
+                                           
+                                           
+                                           
+       2. RCL (Rotate Carry to Left)     |
+          RCL Destinatiion, Count        | CF <- MSB <------------------- LSB  
+                                           |                               ^
+                                           |                               |
+                                           |            Rotate             |
+                                           ---------------------------------
+          example :
+          -. RCL AL, 1
+                 AL, ABH      CF <- MSB <------------------- LSB  
+                              |                               ^
+                              |                               |
+                              |            Rotate             |
+                              --------------------------------- 
+                 
+                 
+                              NC         A             B 
+                     ABH      [0]   [1][0][1][0] [1][0][1][1]
+                               |                          /
+                               |                         /                                                 
+                          MSB  |                        /   
+                          [1]  |    [0][1][0][1] [0][1][1][0] 
+                               |                           ^                          
+                               |                           |
+                               -----------------------------        
+                                         5             6
+              RCL AL, 56H                                
+                                           
+                                           
+                                           
+       3. ROR (Rotate Operator to Right) |              
+          ROR Destinatiion, Count        | CF  - MSB -------------------> LSB  
+                                            ^     ^                        |
+                                            |     |                        |
+                                            |     |        Rotate          |
+                                             ----- ------------------------
+          example :                                   
+          -. ROR AL, 1
+                 AL, ABH      CF  - MSB -------------------> LSB  
+                               ^     ^                        |
+                               |     |                        |
+                               |     |        Rotate          |
+                                ----- ------------------------ 
+                 
+                 
+                                NC        A            B 
+                     ABH        [0]  [1][0][1][0] [1][0][1][1]
+                                      \                                                                    
+                                       \                        LSB 
+                                    [1][1][0][1] [0][1][0][1]   [1] 
+                                     ^                           |                          
+                                     |                           |
+                                     -----------------------------        
+                                          D            5
+              ROR AL, D5H
+  
+  
+  
+       4. RCR (Rotate Carry to Right)    |              
+          RCR Destinatiion, Count        | CF -> MSB -------------------> LSB  
+                                            ^                              |
+                                            |                              |
+                                            |           Rotate             |
+                                             ------------------------------
+          example :                                   
+          -. RCR AL, 1
+                 AL, ABH      CF -> MSB -------------------> LSB  
+                               ^                              |
+                               |                              |
+                               |           Rotate             |
+                               -------------------------------- 
+                 
+                 
+                               NC       A            B 
+                     ABH       [0] [1][0][1][0] [1][0][1][1]
+                                  \  \                                                                    
+                           Carry   \  \                        LSB 
+                             [1]   [0][1][0][1] [0][1][0][1]   [1] 
+                              ^                                 |                          
+                              |                                 |
+                              -----------------------------------        
+                                          5            5
+              RCR AL, 55H                                   
+                                             
+                                             
+                                             
+         
+
+          
