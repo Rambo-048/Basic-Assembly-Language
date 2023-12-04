@@ -1,0 +1,43 @@
+LOGIC INSTRUCTION
+
+1. AND
+   AND Destination, Source        D.S    --> D
+2. OR 
+   OR Destination, Source         S+D    --> D
+3. XOR
+   XOR Destination, Source        S[+]D  --> D
+4. NOT                                       _
+   NOT Destination                D      --> D
+    ___________________________________________________________________
+   |     INPUT     |                      OUTPUT                 _____ | 
+   |_______________|AND(A.B)|OR(A+B)|XOR(A[+]B)|NOT A|NOT B|XNOR(A[+]B)|
+   |   A   |   B   |----------------------------------------------------
+   |   0   |   0   |    0   |   0   |    0     |  1  |  1  |     1     |
+   |   0   |   1   |    0   |   1   |    1     |  1  |  0  |     0     |
+   |   1   |   0   |    0   |   1   |    1     |  0  |  1  |     0     |
+   |   1   |   1   |    1   |   1   |    0     |  0  |  0  |     1     |
+   
+   example :
+   1. AND
+      AND     CX    , [SI]
+      RCX     1234        
+      RSI     1000
+      E1000   5678
+                       CX     , 12  34 --> 0001 0010 0011 0100
+                       [SI]   , 56  78 --> 0101 0110 0111 1000
+                                 H   L     ____________________ AND
+                                           0001 0010 0011 0000
+                                             1    2    3    0
+              CX[SI], 1230
+              
+              
+   2. OR      AX    , [ABCH]
+      RAX     AAAA
+      E0ABC   5555    
+                      AX      , AAAA   --> 1010 1010 1010 1010
+                      0ABC    , 5555   --> 0101 0101 0101 0101
+                                           ____________________ OR
+                                           1111 1111 1111 1111 
+                                            F    F    F    F
+                      
+                      AX[ABCH], FFFF 
