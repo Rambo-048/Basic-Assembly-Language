@@ -1,0 +1,16 @@
+CALL AND RETURN INSTRUCTIONS
+
+CALL Subroutine (Function, Macro, Procedure)
+
+RET 
+
+example : 
+CS : 100 
+          MOV       CL, 34 
+          MOV       CH, 12  
+          CALL 200 
+
+CS : 200  
+          ADD       CL, CH
+          RET       CL, CH   
+                    12, 46
