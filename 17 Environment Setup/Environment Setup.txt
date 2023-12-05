@@ -1,0 +1,25 @@
+ENVIRONMENT SETUP
+                                                                                               False  
+start ------> Editor  -------> Assembler ------->      Linker      -------> Debugger -------> Condition --------> End Program
+         ^                                        (object,library)                               |
+         |                                                                                       |
+         |                                                                                       | True
+         |                                                                                       |
+         -----------------------------------------------------------------------------------------                                                                              
+
+Editor     : Notepad, Sublime Text, etc
+           ;source_code
+            filename.asm
+        
+Assembler  : NASM, TASM
+           ;object_code
+            filename.obj (binary)
+
+Linker     : LINK, TLINK
+           ;executable_file
+            filename.exe
+            filename.com, etc
+
+IDE(Intergrated Development Environment) + Editor + Assembler + Linker + Debugger
+                
+       
