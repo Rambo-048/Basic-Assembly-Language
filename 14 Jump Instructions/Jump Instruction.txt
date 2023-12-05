@@ -1,0 +1,77 @@
+JUMP INSTRUCTION
+
+---------------------------------------------
+NORMAL --> ins 1 --> ins 2 --> ins 3        |
+                                            |
+                                            |
+JUMP to ins 4, to ins 2                     |
+                ___________________         |
+               |         2         |        |
+     JUMP   -->          ^         V        |
+                         |       ins 4      |
+                         |         |        |
+                         -----------        | 
+                                            |
+---------------------------------------------   
+
+1. UNCONDITIONAL
+   JMP Destination
+   example :
+   CS 100 ;address 100
+           RAX 1234
+           RCX 5678
+   
+           JMP 200
+           MUL CX
+          
+          ;address 200
+   CS 200  ADD CX, AX
+              ;AX + CX
+               
+              ;destination
+               CX, 68AC
+          
+   
+   
+2. CONDITIONAL
+   JXX Destination
+   If XX --> TRUE  --> JUMP
+      XX --> FALSE --> CONTINUE
+   
+   JXX :
+   1. UNSIGNED
+      JA   -> JUMP IF ABOVE  >           __   |
+      JNAE -> JUMP IF NOT ABOVE OR EQUAL >=   |
+                                              | ---> JE = JZ -> JUMP IF EQUAL
+      JB   -> JUMP IF BELOW  <           __   |           
+      JNAE -> JUMP IF NOT BELOW OR EQUAL >=   |
+      
+   
+   2. SIGNED
+      JG   -> JUMP IF GREATER >            __
+      JNGE -> JUMP IF NOT GREATER OR EQUAL >=
+      JL   -> JUMP IF LESS <            __
+      JNLE -> JUMP IF NOT LESS OR EQUAL <=
+      
+           
+      
+   example :
+   CS 100 ;address 100
+           MOV CL, 55
+           MOV CH, 55
+           
+          ;condition check
+           CMP CL, CH
+           
+          ;jump to A200 if condition true
+           JE 200
+           
+          ;add
+           ADD CL, CH
+           
+   CS 200 ;address 200
+           SUB CL, CH
+               CH, 55
+           
+           
+             
