@@ -1,0 +1,32 @@
+COMPILE ASSEMBLY LANGUAGE USE COMMAND LINE
+
+1. LINUX
+   1. Create Source
+      - notepad, sublime-text 
+
+   2. Assembling source file
+      - nasm -f elf filename.asm
+      - nasm -f elf64 filename.asm
+
+   3. Create Executable
+      - ld filename.o -o filename
+      OR
+      - gcc test.o -o filename
+
+   4. Execution program
+      ./filename
+
+2. WINDOW
+   1. Assembling source file
+      - nasm -f win32 filename.asm -o filename.o
+
+   2. Create Executable program
+      - ld filename.o -o filename.exe
+
+   3. Executable
+      - filename.exe
+      
+      
+NOTED :
+- COM -> create a Small program
+- EXE -> create a Big Program
