@@ -1,0 +1,12 @@
+CREATE AND COMPILE ASSEMBLY LANGUAGE USE DOSBOX
+
+1. Create Source Code
+2. Compile
+   - TASM filename or filename.asm
+3. linker
+   - TLINK /T filename
+4. Execute 
+   - filename.com OR
+   - filename.exe
+    
+
