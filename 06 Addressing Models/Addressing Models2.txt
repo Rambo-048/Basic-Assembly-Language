@@ -1,0 +1,183 @@
+ADDRESSING MODELS
+
+Addressing Models, Instruction to run/access memory, register and I/O
+
+A. BASIC SYNTAX
+    
+   --------------------------------------
+   OP Code | Operand
+           |
+   -syntax-| Register,Memory, Data, I/O 
+   -------------------------------------
+   
+   Syntax :
+   - MOV            -> Copy
+   - ADD            -> Count
+   - ECHG(Exchange) -> Change
+   
+   - Little Endian --> Address Data Max to Min
+   - Big Endian    --> Address Data Min to Max
+
+B. Mode Instruction
+   1. Immediate
+      MOV CX, 2000H
+               
+              CH   CL    
+          CX, 20 | 00
+          
+      
+   2. Register
+   
+          destination      source
+      MOV CX            ,  AX
+                           
+                           AH     AL
+          AX            ,  20  |  00
+          
+          		   CH     CL
+          CX            ,  20  |  00 
+          
+          
+    3. Direct - Use Memory -
+       
+                               Data Inside Memory
+       MOV AX              ,   [20|04H]
+           
+           Memory_Address      data_inside_memory    ("Little Endian")
+               2000                   10
+               2001                   20
+               2002                   30
+               2003                   40
+               2004                   50
+               2005                   60
+               
+                                     AH  |  AL
+                                   2005  |  2004
+           AX              ,        [60  |  50]
+                               00111100     00110010   -> 16 bit
+          
+                               
+    4. Register Indirect
+       MOV AX              ,   [BX]
+       
+                                Address             Data
+           BX              ,   [20|01H]              20
+                           
+           Memory_Address      data_inside_memory     ("Little Endian")
+               2000                   10
+               2001                   20
+               2002                   30
+               2003                   40
+               2004                   50
+               2005                   60
+                                          
+                                    Address           Data
+           AX              ,        [20|01H]           20
+                              
+                             address
+                                        AH  |  AL
+                                      2002  |  2001
+                             data
+           AX              ,           [30  |  20]
+                                  00011110     00010100   -> 16 bit
+                               
+                               
+     5. Base (BX, BP)
+        MOV DX             ,   [BX]
+        
+                               Address                Data
+        BX                 ,   [20|03H]                50
+                           
+        Memory_Address         data_inside_memory     ("Little Endian")
+            2000                      10
+            2001                      20
+            2002                      30
+            2003                      40
+            2004                      50
+            2005                      60
+            
+                                     Address           Data
+        DX                 ,         [20|03H]           45
+                                
+                              address
+                                          DH  |  DL
+                                        2004  |  2003
+                              data      
+        DX                 ,             [50  |  40]
+                                    00110010     00101000   -> 16 bit
+        
+        
+    6. Indexed (SI, DI)
+       MOV BX              ,   [SI]        -> Copy Data from Source Index to BX
+       MOV BX              ,   [DI]        -> Copy Data from Destination Index to BX
+    
+    7. Base Index
+       MOV AX              ,   [BX+DI]
+       
+       Memory_Address[AX]      Memory_Address [BX+DI]          
+           AX              ,   BX [20|02H]
+                               DI [30|02H]
+                               ___________+
+           AX              ,       50 04H    <-- Address
+              
+       ;Copy Data to Index
+       Memory_Address [AX] ,   data_inside_memory                              
+            5000                      10
+            5001                      15
+            5002                      20
+            5003                      25
+            5004                      30
+            5005                      35
+            
+                             address 
+                                          AH  |  AL
+                                        5005  |  5004
+                             data        
+           AX              ,             [35  |  30]
+                                    00100011     00011110
+                               
+                               
+    8. Base Index With Displacement       
+       Memory_Address[AX]      Memory_Address [BX+DI]          
+           AX              ,   BX [20|00]
+                               DI [30|00]
+                               ___________+
+           AX              ,       50 00H    <-- Address
+       
+       ;Memory
+       Memory_Address [AX] ,   data_inside_memory                              
+            5000                      10
+            5001                      15
+            5002                      20
+            5003                      25
+            5004                      30
+            5005                      35  
+       
+       ;Copy Data to Index                                                                      
+       MOV AX              ,   [BX+DI+05] 
+       
+       Memory_Address [AX] ,   data_inside_memory
+            -------------------------------                          
+            5000                      10  |
+            5001                      15  | Displacement 04
+            5002                      20  |
+            5003                      25  |          
+            5004                      30  | 
+            -------------------------------
+            5005                      35     <--- Address BX
+            -------------------------------
+            5006                      40
+            5007                      45
+       
+       ;Value BX                          
+                                 Address        Data
+         BX                 ,   [50|05H]         35
+         
+       
+       ;Value AX            
+                               address
+                                           AH  |  AL
+                                         5006  |  5005
+                               data
+         AX                 ,             [40  |  35]
+                                     00101000     00100011   -> 16 bit   ,         
