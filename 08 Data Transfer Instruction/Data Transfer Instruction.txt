@@ -60,10 +60,10 @@ A. Data Transfer Instruction
        example :
        LES            CX       ,  [1234]
                       Memory       
-           SPTR   ->  1234          10  
-           SPTR+1 ->  1235          20  
-           SPTR+2 ->  1236          30
-           SPTR+3 ->  1237          40
+           SPTR   ->  1234          05  
+           SPTR+1 ->  1235          15  
+           SPTR+2 ->  1236          25
+           SPTR+3 ->  1237          35
        
        ;data CX and ES
        CX [CH   |   CL]   
