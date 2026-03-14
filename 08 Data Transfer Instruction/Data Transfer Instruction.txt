@@ -67,9 +67,9 @@ A. Data Transfer Instruction
        
        ;data CX and ES
        CX [CH   |   CL]   
-          [20       10]
+          [15       05]
        ES [EH    |  EL]
-          [40       30] 
+          [35       25] 
       
        
     
