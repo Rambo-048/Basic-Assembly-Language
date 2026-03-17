@@ -30,9 +30,9 @@ ADDITION ARITHMATIC INSTRUCTION (+,-,x,%)
   
    3. INC (Increment)
       INC Destination             D+I   --> D
-      RAX 0001
+      RAX 0015
       INC AX
-          AX+1 : 0002
+          AX+1 : 0016
       
    4. DAA (Decimal Adjust for Addition)
       example :
@@ -47,5 +47,5 @@ ADDITION ARITHMATIC INSTRUCTION (+,-,x,%)
       RAX 0005
       RCX 0005
       ADD AX, CX  --> A 
-      AAA         --> 0101 (ASCII 101 -> A)
+      AAA         --> 0100 (ASCII 100 -> A)
       
