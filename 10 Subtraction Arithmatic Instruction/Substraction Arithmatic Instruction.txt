@@ -30,42 +30,42 @@ SUBSTRACTION ARITHMATIC INSTRUCTION
     3. DEC (Decrement)             D - 1      --> D
        DEC Destination
        example : 
-       RAX  = 0002
+       RAX  = 0005
        DEC AX
-           AX 0002
+           AX 0005
                  1
               _____ -
-              0001
+              0004
        
     4. NEG (Negasi)                0 - D      --> D
        NEG Destination   
        example :
-       RCX = 0002
+       RCX = 0005
        NEG        CX
-                 [00]  [02]
-                 0000  0010
+                 [00]  [05]
+                 0000  0101
                  
-          Negasi 1111  1101   complement 1
-                       0010   complement 1 + 2
+          Negasi 1111  1010   complement 1
+                       0001   complement 2 = complement 1 + 1
                  __________ +
-                 1111  1111
-                  F     F
+                 1111  1011
+                  F     B
                   
         NEG       CX
-                  FFFF
+                  FFFB
                   
     5. DAS (Decimal Adjust for Substraction)
        example :
        RAX 000F
        RCX 0005
        SUB AX, CX   --> A
-       DAS          --> 10
+       DAS          --> 4
        
     6. AAS (ASCII Adjust for Substraction)
        example :
        RAX 000F
        RCX 0005
        SUB AX, CX   --> A
-       AAS          --> 0101 (ASCII 101 -> A)
+       AAS          --> 0100 (ASCII 0100 -> 4)
                         
                               
