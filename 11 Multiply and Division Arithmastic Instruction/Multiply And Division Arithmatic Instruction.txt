@@ -1,0 +1,103 @@
+MULTIPLY AND DIVISION ARITHMATIC INSTRUCTION
+
+[x] 
+                 
+    1. MUL (Multiply) (unsigned)
+       Use AX and AL for Accumulator (Save Logic Register in Arithmatic )
+       AX -> 16 bit
+       AL -> 8 bit
+       
+       example :
+       RAX : 10 (Destination)
+       RCX : 20 (Source)
+       MUL CX
+           AX, 200
+       
+    2. IMUL (Integer Multiply) (signed)
+       IMUL Source
+       
+    3. AAM (Adjust for Multiplication)
+       
+
+[%]
+   
+   1. DIV (Division) (unsigned)
+      DIV Source
+      example 1 : (No_Carry) --> 8 bit
+      RAX 36
+      RCX 3
+      DIV CX
+          AX, 12 (Total)
+      
+      example 2 : (Carry) --> 8 bit 
+      RAX 80
+      RCX 4
+      DIV CX 
+          AX, 20 (Total)
+      
+      example 3 : (Carry) --> 16 bit
+      RAX 1234
+      RCX 1210
+      DIV CX
+          AX, 1  (Total) --> AL
+          DX, 24 (Carry) --> AH
+      
+   2. IDIV (Integer Division) (signed)
+      IDIV Source
+      
+   3. AAD (Adjust for Division)
+   
+   
+[x,%]
+      1. CBW (Convert Byte (8bit) to Word (16bit))
+         example :
+         MOV AL, 34H --> 0011 0100    --> +54
+         CBW AX = 0000 0000 | 0011 0100 --> 00 34H = +54
+                     AH     |     AL        AH AL 
+        
+      2. CWD (Convert Word (16bit) to Double Word (32bit))
+        
+         AX --------------------------- 
+            AH     AL       AH     AL       
+            8bit   8bit     8bit   8bit
+            |        |      |        | 
+            ----------      ----------
+                 |               |
+                16bit          16bit
+                  |              |
+                  |              |
+                  ----------------
+                          |
+                         32bit
+                
+         example :
+         MOV AX, FF4F  --> 1111 1111 0100 1111 
+         
+         CWD DX:AX       = 1111 1111 | 1111 1111 | 1111 1111 | 0100 1111 ---> FFFFH:FF4F
+                              AH           AL    |    AH          AL
+                               |                 |                 |
+                               |                 |                 |
+                               -------------------------------------
+                                                 |
+                                                 |
+                                                32 bit
+                                                
+                                                
+                                                
+
+
+NOTED :
+
+*) DIV
+   1111 1111 1111    1111 1111 1111    1111 1111 1111                 -----> 36/3 ---> 12   
+     1    2    3      4    5    6        7   8     9
+  
+   1111 1111 1111 1111   1111 1111 1111 1111   1111 1111 1111 1111    -----> 48/12 ---> 4
+     1    2    3    4    5       6   7   8     9    10    11   12  
+  
+  
+   1111 1111 1111 1111   1111 1111 1111 1111   1111 1111 1111 1111   1111 1111 1111 1111   1111 1111 1111 1111     -----> 80/4 ---> 20
+     1    2    3    4      5    6    7   8      9    10   11   12     13   14   15   16     17   18   19   20
+     
+   1111 1111 1111 1111   1111 1111 1111 1111   1111 1111 1111 1111   1111 1111 1111 1111   1111 1111 1111 1111     -----> 80/5 ---> 19
+     1    2    3    4      5    6    7   8      9    10   11   12     13   14   15   16     17   18   19   20
