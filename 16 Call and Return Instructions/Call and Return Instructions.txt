@@ -4,13 +4,16 @@ CALL Subroutine (Function, Macro, Procedure)
 
 RET 
 
-example : 
+example 1: 
 CS : 100 
-          MOV       CL, 34 
-          MOV       CH, 12  
+          MOV       CL, 41 
+          MOV       CH, 6B  
           CALL 200 
 
 CS : 200  
           ADD       CL, CH
-          RET       CL, CH   
-                    12, 46
+     20X            6B, D6     
+          
+          RET       
+     10X            6B, D6
+
