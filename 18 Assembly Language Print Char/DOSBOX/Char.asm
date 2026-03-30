@@ -6,7 +6,7 @@
 ORG 100h
 
 Process:                            ;label or address
-	 MOV AX,02h                     ;value Service for print char
+	 MOV AH,02h                     ;value Service for print char
 	 MOV DL,'Z'                     ;DL = print char ASCII
 	 INT 21h                        ;print char
 	 INT 20h                        ;EXIT, return to DOS
