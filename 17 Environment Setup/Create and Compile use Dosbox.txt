@@ -4,7 +4,9 @@ CREATE AND COMPILE ASSEMBLY LANGUAGE USE DOSBOX
 2. Compile
    - TASM filename or filename.asm
 3. linker
-   - TLINK /T filename
+   - TLINK filename      (Create .EXE, Warning:No Stack)
+   - TLINK /t filename   (Create .COM)
+   - TLINK /T filename   (Fatal: Invalid Target /T)
 4. Execute 
    - filename.com OR
    - filename.exe
