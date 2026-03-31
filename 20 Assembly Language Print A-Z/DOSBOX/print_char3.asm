@@ -8,8 +8,8 @@ ORG 100h
 
 Process:
 	   MOV AH,02h               ;value service
-	   MOV DL,'A'               ;DL = char 'A' atau DL = 41h
-	   MOV CX,0Ah               ;total Loop (print A - J)
+	   MOV DL,'Z'               ;DL = char 'Z' atau DL = 5Ah
+	   MOV CX,1Ah               ;total Loop (print Z - s)
 
 Data_Loop:
 	   INT 21h                  ;Print Character
