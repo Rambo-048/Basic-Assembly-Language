@@ -13,5 +13,5 @@ _start:						;tell linker entry point
 
 section	.data
 
-text	db 'KEEP STRUGGLE, NEVER GIVE UP', 0xa			;print String
+text	db 'NEVER GIVE UP, BECAUSE GREAT THINGS TAKE TIME', 0xa			;print String
 length	equ $ - text				;length String	
