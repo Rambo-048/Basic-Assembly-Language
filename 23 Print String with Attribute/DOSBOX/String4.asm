@@ -11,13 +11,13 @@ String0 DB 'EVEN MIRACLES TAKE A LITTLE TIME'
 Process:
 	MOV AX, 1300h		;Service 13h Subfunction 00
 	MOV BL, 10011010b	;Attribute String
-	MOV BH, 00		;PAGE SHOW 00
-	MOV DL, 50		;POSITION X
-	MOV DH, 25		;POSITION Y
-	MOV CX, 40		;TOTAL CHARACTER IN STRING
+	MOV BH, 00			;PAGE SHOW 00
+	MOV DL, 50			;POSITION X
+	MOV DH, 25			;POSITION Y
+	MOV CX, 40			;TOTAL CHARACTER IN STRING
 	LEA BP, String0		;ES:BP String Address ---> PRINT STRING ADDRESS
-	INT 10h			;Print String	
-	INT 20h			;exit
+	INT 10h				;Print String	
+	INT 20h				;exit
 
 END	DataString
 	
