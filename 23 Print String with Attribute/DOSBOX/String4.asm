@@ -1,4 +1,4 @@
-;String1.asm  --->  Print String with Attribute  --> INT 10h service 13h
+;String4.asm  --->  Print String with Attribute  --> INT 10h service 13h
 ;DB ==> DEFINE BYTE
 
 .MODEL SMALL
