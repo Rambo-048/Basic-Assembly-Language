@@ -6,7 +6,7 @@
 ORG 100h
 
 DataString: JMP Process
-String0 DB 'EVEN MIRACLES TAKE A LITTLE TIME'
+String0 DB 'EVEN MIRACLES NEED A LITTLE TIME'
 
 Process:
 	MOV AX, 1300h		;Service 13h Subfunction 00
