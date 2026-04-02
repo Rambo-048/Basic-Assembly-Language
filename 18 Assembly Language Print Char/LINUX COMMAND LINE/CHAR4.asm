@@ -1,5 +1,5 @@
 section .data
-	text db "EVEN MIRACLES TAKE A LITTLE TIME", 10
+	text db "EVEN MIRACLES NEED A LITTLE TIME", 10
 
 section .text
 	global _start
