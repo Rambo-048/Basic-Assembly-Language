@@ -1,4 +1,4 @@
-;Char.asm --> PRINT CHAR (.COM)
+;Char.asm --> PRINT CHAR (.COM)  --> Print Char Use INT 21h Service 02h
 ;CREATE AND COMPILE USE DOSBOX
 
 .MODEL                                   ;TINY,SMALL,MEDIUM,LARGE,HUGE
