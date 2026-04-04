@@ -1,95 +1,94 @@
-;create_program.asm  --> program to create a value
+;create_program3.asm  --> program to create a value
 
-.MODEL
+.MODEL SMALL
 .CODE
 ORG 100h
 
-TData:	JMP Process
-String DB "PROGRAM TO CREATE A VALUE", 13,10           ;13,10 ==> New Line/Enter
-       DB "---------------------------------", 13,10
-       DB "Nilai: ", 13,10
-       DB "A,B,C,D,E", 13,10
-       DB "Insert Value Here (A/B/C/D/E) :  $"
+DataString:	JMP Process
+
+String DB "PROGRAM TO CREATE STRING",13,10           ;13,10 ==> New Line/Enter
+       DB "---------------------------------",13,10
+       DB "VALUE: ",13,10
+       DB "1,2,3,4,5",13,10
+       DB "PRESS Q TO QUIT PROGRAM",13,10
+       DB "Choose Value (1/2/3/4/5) :  $" 
     
-StringA DB 13,10,"That's Good!! Nice $"
-StringB DB 13,10,"Good!! Wonderfull $"
-StringC DB 13,10,"Not Bad!! I Got Supplies $"
-StringD DB 13,10,"Bad!! Whoopssyy $"
-StringE DB 13,10,"Poor!! Request Back up $"
+String_1 DB 13,10,"Poor!! Request Back up $"
+String_2 DB 13,10,"Good!! Wonderfull $"
+String_3 DB 13,10,"Bad!! Whoopssyy $"
+String_4 DB 13,10,"Not Bad!! I Got Supplies $"
+String_5 DB 13,10,"Thats Good!! Nice $"
 
 Compare:
-	CMP AL, "A"
-	JE NilaiA
-	CMP AL, "a"
-	JE NilaiA
-	CMP AL, "B"
-	JE NilaiB
-	CMP AL, "b"
-	JE NilaiB
-	CMP AL, "C"
-	JE NilaiC
-	CMP AL, "c"
-	JE NilaiC
-	CMP AL, "D"
-	JE NilaiD
-	CMP AL, "d"
-	JE NilaiD
-	CMP AL, "E"
-	JE NilaiE
-	CMP AL, "e"
-	JE NilaiE
-	CMP AL, "Q'
+	CMP AL,"1"
+	JE VALUE_1
+	
+	CMP AL,"2"
+	JE VALUE_2
+	
+	CMP AL,"3"
+	JE VALUE_3
+	
+	CMP AL,"4"
+	JE VALUE_4
+	
+	CMP AL,"5"
+	JE VALUE_5
+	
+	CMP AL,"Q'
 	JE Quit
+	
 Quit:
 	INT 20h
 	
-ValueA: 
-	JMP FunctionA
-ValueB: 
-	JMP FunctionB
-ValueC: 
-	JMP FunctionC
-ValueD: 
-	JMP FunctionD
-ValueE: 
-	JMP FunctionE
+VALUE_1: 
+	JMP Function_1
+VALUE_2: 
+	JMP Function_2
+VALUE_3: 
+	JMP Function_3
+VALUE_4: 
+	JMP Function_4
+VALUE_5: 
+	JMP Function_5
 	
 	
-FunctionA:
-	    MOV AH, 09h
-	    LEA DX, StringA
+Function_1:
+	    MOV AH,09h
+	    LEA DX,String_1
 	    INT 21h
 	    JMP Process
-FunctionB:
-	    MOV AH, 09h
-	    LEA DX, StringB
+Function_2:
+	    MOV AH 09h
+	    LEA DX,String_2
 	    INT 21h
 	    JMP Process
-FunctionC:
-	    MOV AH, 09h
-	    LEA DX, StringC
+Function_3:
+	    MOV AH,09h
+	    LEA DX,String_3
 	    INT 21h
 	    JMP Process
-FunctionD:
-	    MOV AH, 09h
-	    LEA DX, StringD
+Function_4:
+	    MOV AH,09h
+	    LEA DX,String_4
 	    INT 21h
 	    JMP Process
-FunctionE:
-	    MOV AH, 09h
-	    LEA DX, StringE
+Function_5:
+	    MOV AH,09h
+	    LEA DX,String_5
 	    INT 21h
 	    JMP Process
 	
 Process:
-	    MOV AH, 09h		;Service for print string
-	    LEA DX, String	;Call String
+	    MOV AH,09h		;Service for print string
+	    LEA DX,String	;Call String
 	    INT 21h		;Print String
 	
-	    MOV AH, 01h		;Service for write character
+	    MOV AH,01h		;Service for write character
 	    INT 21h		;print character (Output)
+	    JMP Compare
 	
 Exit:
 	    INT 20h		;EXIT
 
-END	    TData
+END	    DataString

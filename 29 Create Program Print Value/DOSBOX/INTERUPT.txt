@@ -1,0 +1,19 @@
+INTERUPT
+
+1. Print Char To Monitor
+     INT 21h,02h                                          INPUT: DL = Char (Character)
+   
+2. Print String To Monitor
+     INT 21h,09h                                          INPUT: AH = 09
+                                                                 DX = 200 <-- Address
+                                                                 e200 "Write String Here $"
+
+3. Read 1 Key (Char)
+     INT 21h,01h    --> Echo "Show String"                INPUT: AL = ASCII KEY   
+     INT 21h,07h  |
+                  | --> No Echo "Do Not Show String" 
+         21h,08h  |
+
+4. Read 1 String    
+     INT 21h,0Ah                                          INPUT: AH = 0A
+                                                                 DX = 200 --> Address Save String
