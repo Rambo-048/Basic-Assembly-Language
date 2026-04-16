@@ -13,7 +13,7 @@ String DB "PROGRAM TO CREATE STRING",13,10           ;13,10 ==> New Line/Enter
        DB "PRESS Q TO QUIT PROGRAM",13,10
        DB "Choose Value (1/2/3/4/5) :  $" 
     
-String_1 DB 13,10,"Poor!! Request Back up $"
+String_1 DB 13,10,"Poor!! $"
 String_2 DB 13,10,"Good!! Wonderfull $"
 String_3 DB 13,10,"Bad!! Whoopssyy $"
 String_4 DB 13,10,"Not Bad!! I Got Supplies $"
